@@ -1,0 +1,55 @@
+fileFormatVersion: 2
+guid: bcf400a1289795f4eb7006af4d21246e
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    ZEPETO_Character_Controller_1 = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nconst
+    PlayerController_1 = require(\\\"./PlayerController\\\");\\r\\nconst UnityEngine_1
+    = require(\\\"UnityEngine\\\");\\r\\nconst UIController_1 = require(\\\"./UIController\\\");\\r\\nconst
+    Carpet_1 = require(\\\"./Carpet\\\");\\r\\nclass CharacterControllerSample extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Start() {\\r\\n        //\uC81C\uD398\uD1A0
+    \uC544\uC774\uB514\uB85C \uB0B4 \uCF00\uB9AD\uD130 \uC0DD\uC131 \\r\\n       
+    $extension(\\\"ZEPETO.Character.Controller.ZepetoPlayersExtension\\\").CreatePlayerWithZepetoId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
+    \\\"\\\", \\\"smilejsu82\\\", new ZEPETO_Character_Controller_1.SpawnInfo(),
+    true);\\r\\n        //\uCF00\uB9AD\uD130\uAC00 \uC0DD\uC131\uB418\uBA74 \uD638\uCD9C
+    \uB418\uB294 \uBD80\uBD84 \\r\\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
+    => {\\r\\n            let _player = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer;\\r\\n           
+    this.playerController = _player.zepetoPlayer.character.gameObject.AddComponent($typeof(PlayerController_1.default));\\r\\n           
+    var go = UnityEngine_1.Object.Instantiate(ZEPETO_Character_Controller_1.ZepetoPlayers.instance.controllerData.horizontalController);\\r\\n           
+    this.uiController = go.GetComponent($typeof(UIController_1.default));\\r\\n           
+    this.uiController.downAction = () => {\\r\\n                console.log(`[CreateCarpet]
+    carpet : ${this.carpet}`);\\r\\n                this.carpet.MoveStart();\\r\\n           
+    };\\r\\n            this.uiController.dragAction = (dir) => {\\r\\n               
+    this.carpet.Move(dir);\\r\\n            };\\r\\n            this.uiController.upAction
+    = () => {\\r\\n                this.carpet.MoveStop();\\r\\n            };\\r\\n           
+    this.uiController.carpetBtn.onClick.AddListener(() => {\\r\\n               
+    this.CreateCarpet(this.playerController.gameObject.transform.position);\\r\\n               
+    this.playerController.Ride(this.carpet);\\r\\n                ZEPETO_Character_Controller_1.ZepetoPlayers.instance.characterData.walkSpeed
+    = 0;\\r\\n                ZEPETO_Character_Controller_1.ZepetoPlayers.instance.characterData.runSpeed
+    = 0;\\r\\n            });\\r\\n            this.playerController.enterAreaEvent.AddListener(()
+    => {\\r\\n                this.uiController.ShowCarpetButton();\\r\\n           
+    });\\r\\n            this.playerController.exitAreaEvent.AddListener(() => {\\r\\n               
+    this.uiController.HideCarpetButton();\\r\\n            });\\r\\n        });\\r\\n   
+    }\\r\\n    CreateCarpet(pos) {\\r\\n        this.carpetGo = UnityEngine_1.Object.Instantiate(this.carpetPrefab,
+    pos, UnityEngine_1.Quaternion.identity);\\r\\n        console.log(`[CreateCarpet]
+    carpetGo : ${this.carpetGo}`);\\r\\n        this.carpet = this.carpetGo.AddComponent($typeof(Carpet_1.default));\\r\\n       
+    console.log(`[CreateCarpet] carpet : ${this.carpet}`);\\r\\n    }\\r\\n}\\r\\nexports.default
+    = CharacterControllerSample;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hhcmFjdGVyQ29udHJvbGxlclNhbXBsZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkNoYXJhY3RlckNvbnRyb2xsZXJTYW1wbGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsNkVBQW9HO0FBQ3BHLHlEQUFpRDtBQUNqRCw2Q0FBZ0Y7QUFDaEYsaURBQXlDO0FBQ3pDLHFDQUE2QjtBQUU3QixNQUFxQix5QkFBMEIsU0FBUSxxQ0FBcUI7SUFReEUsS0FBSztRQUNELG9CQUFvQjtRQUNwQixpRUFBdUIsd0JBQXdCLENBQS9DLDJDQUFhLENBQUMsUUFBUSxFQUEwQixFQUFFLEVBQUUsWUFBWSxFQUFFLElBQUksdUNBQVMsRUFBRSxFQUFDLElBQUksRUFBRTtRQUV4RixxQkFBcUI7UUFDckIsMkNBQWEsQ0FBQyxRQUFRLENBQUMsa0JBQWtCLENBQUMsV0FBVyxDQUFDLEdBQUcsRUFBRTtZQUV2RCxJQUFJLE9BQU8sR0FBaUIsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDO1lBQy9ELElBQUksQ0FBQyxnQkFBZ0IsR0FBRyxPQUFPLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxVQUFVLENBQUMsWUFBWSxTQUFDLDBCQUFnQixFQUFHLENBQUM7WUFDbkcsSUFBSSxFQUFFLEdBQUcsb0JBQU0sQ0FBQyxXQUFXLENBQWEsMkNBQWEsQ0FBQyxRQUFRLENBQUMsY0FBYyxDQUFDLG9CQUFvQixDQUFDLENBQUM7WUFDcEcsSUFBSSxDQUFDLFlBQVksR0FBRyxFQUFFLENBQUMsWUFBWSxTQUFDLHNCQUFZLEVBQUcsQ0FBQztZQUVwRCxJQUFJLENBQUMsWUFBWSxDQUFDLFVBQVUsR0FBRyxHQUFFLEVBQUU7Z0JBRS9CLE9BQU8sQ0FBQyxHQUFHLENBQUMsMkJBQTJCLElBQUksQ0FBQyxNQUFNLEVBQUUsQ0FBQyxDQUFDO2dCQUV0RCxJQUFJLENBQUMsTUFBTSxDQUFDLFNBQVMsRUFBRSxDQUFDO1lBQzVCLENBQUMsQ0FBQztZQUVGLElBQUksQ0FBQyxZQUFZLENBQUMsVUFBVSxHQUFHLENBQUMsR0FBRyxFQUFDLEVBQUU7Z0JBQ2xDLElBQUksQ0FBQyxNQUFNLENBQUMsSUFBSSxDQUFDLEdBQUcsQ0FBQyxDQUFDO1lBQzFCLENBQUMsQ0FBQztZQUVGLElBQUksQ0FBQyxZQUFZLENBQUMsUUFBUSxHQUFHLEdBQUUsRUFBRTtnQkFDN0IsSUFBSSxDQUFDLE1BQU0sQ0FBQyxRQUFRLEVBQUUsQ0FBQztZQUMzQixDQUFDLENBQUM7WUFFRixJQUFJLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLEdBQUUsRUFBRTtnQkFDaEQsSUFBSSxDQUFDLFlBQVksQ0FBQyxJQUFJLENBQUMsZ0JBQWdCLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQztnQkFDdkUsSUFBSSxDQUFDLGdCQUFnQixDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLENBQUM7Z0JBRXhDLDJDQUFhLENBQUMsUUFBUSxDQUFDLGFBQWEsQ0FBQyxTQUFTLEdBQUcsQ0FBQyxDQUFDO2dCQUNuRCwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxhQUFhLENBQUMsUUFBUSxHQUFHLENBQUMsQ0FBQztZQUV0RCxDQUFDLENBQUMsQ0FBQztZQUVILElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxjQUFjLENBQUMsV0FBVyxDQUFDLEdBQUUsRUFBRTtnQkFDakQsSUFBSSxDQUFDLFlBQVksQ0FBQyxnQkFBZ0IsRUFBRSxDQUFDO1lBQ3pDLENBQUMsQ0FBQyxDQUFDO1lBRUgsSUFBSSxDQUFDLGdCQUFnQixDQUFDLGFBQWEsQ0FBQyxXQUFXLENBQUMsR0FBRSxFQUFFO2dCQUNoRCxJQUFJLENBQUMsWUFBWSxDQUFDLGdCQUFnQixFQUFFLENBQUM7WUFDekMsQ0FBQyxDQUFDLENBQUM7UUFFUCxDQUFDLENBQUMsQ0FBQztJQUNQLENBQUM7SUFFTyxZQUFZLENBQUMsR0FBYTtRQUU5QixJQUFJLENBQUMsUUFBUSxHQUFHLG9CQUFNLENBQUMsV0FBVyxDQUFDLElBQUksQ0FBQyxZQUFZLEVBQUUsR0FBRyxFQUFFLHdCQUFVLENBQUMsUUFBUSxDQUFnQixDQUFDO1FBRS9GLE9BQU8sQ0FBQyxHQUFHLENBQUMsNkJBQTZCLElBQUksQ0FBQyxRQUFRLEVBQUUsQ0FBQyxDQUFDO1FBRTFELElBQUksQ0FBQyxNQUFNLEdBQUcsSUFBSSxDQUFDLFFBQVEsQ0FBQyxZQUFZLFNBQUMsZ0JBQU0sRUFBRyxDQUFDO1FBRW5ELE9BQU8sQ0FBQyxHQUFHLENBQUMsMkJBQTJCLElBQUksQ0FBQyxNQUFNLEVBQUUsQ0FBQyxDQUFDO0lBQzFELENBQUM7Q0FFSjtBQWxFRCw0Q0FrRUMifQ==\",\"assetPath\":\"Assets/Scripts/CharacterControllerSample.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"carpetPrefab\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"CharacterControllerSample\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 601f651208cfb4434911c23db4c05dc3
